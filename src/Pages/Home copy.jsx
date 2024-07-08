@@ -1,13 +1,11 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import './Home.css';
-import { Spotify } from 'react-spotify-embed';
-import emailjs from '@emailjs/browser';
-
 import linkedinImage from './Images/linkedin.png';
 import GithubImage from './Images/github.png';
 import Portrait from './Images/portrait.jpg';
 import Down from './Images/down-arrow.png'
 import Insta from './Images/insta.png'
+import { Spotify } from 'react-spotify-embed';
 import Construction from './Images/under-construction.webp'
 import cpp_icon from './Images/cpp.png'
 import c_icon from './Images/C.png'
@@ -27,9 +25,6 @@ import Emma from './Images/1.png'
 import ChupacabraSaysHello from './Images/2.png'
 import Website from './Images/3.png'
 import kartify from './Images/4.png'
-import stickhero from './Images/5.png'
-import dungeon from './Images/6.png'
-import mailImage from './Images/mail.png'
 
 const Home = () => {
     const containerRef = useRef(null);
@@ -97,29 +92,6 @@ const Home = () => {
     };
 
 
-    const form = useRef();
-    const [isSent, setIsSent] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const sendEmail = (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        emailjs
-            .sendForm('SERVICE_KEY', 'TEMPLATE_KEY', form.current, {
-                publicKey: 'PUBLIC_KEY',
-            })
-            .then(
-                () => {
-                    console.log('SUCCESS!');
-                    setIsSent(true);
-                    setIsSubmitting(false);
-                },
-                (error) => {
-                    console.log('FAILED...', error.text);
-                    setIsSubmitting(false);
-                },
-            );
-    };
-
     return (
         <div className="scroll-container" ref={containerRef}>
             <div className="card C1">
@@ -128,15 +100,15 @@ const Home = () => {
                 </div>
                 <div className="right-content1">
                     <div className="icon-group">
-                        <a href="https://github.com/irfan-tz" target="_blank" rel="noopener noreferrer">
-                            <img src={GithubImage} alt="GitHub" className="icon" />
-                            <p>GitHub</p>
-                        </a>
-                    </div>
-                    <div className="icon-group">
                         <a href="https://www.linkedin.com/in/mohd-irfan-raza/" target="_blank" rel="noopener noreferrer">
                             <img src={linkedinImage} alt="LinkedIn" className="icon" />
                             <p>LinkedIn</p>
+                        </a>
+                    </div>
+                    <div className="icon-group">
+                        <a href="https://github.com/irfan-tz" target="_blank" rel="noopener noreferrer">
+                            <img src={GithubImage} alt="GitHub" className="icon" />
+                            <p>GitHub</p>
                         </a>
                     </div>
                 </div>
@@ -223,7 +195,7 @@ const Home = () => {
 
                     </div>
                     <div className="right-content2">
-                        <img src={Portrait} alt='Irfan Raza smiling' className='portrait' />
+                        <img src={Portrait} alt='Irfan Raza smiling into your soul' className='portrait' />
                     </div>
                     <div className="button-container">
                         <button className="games-button" onClick={() => scrollToGames()}>
@@ -265,111 +237,76 @@ const Home = () => {
 
             <center className="card C3">
                 <h1 style={{ position: "absolute", top: "40px", margin: 0, width: "100%", color: "#191d18" }}>Projects</h1>
-                <div style={{ marginTop: "40px", overflow: "hidden", overflowY: "scroll", paddingTop: "80px" }}>
-                    <ol style={{ alignContent: "center", display: "grid", gap: "2rem", gridAutoFlow: "row", listStyleType: "none", maxWidth: "100vw", maxHeight: "60vh", gridTemplateColumns: "repeat(2,minmax(0,1fr))", marginRight: "2rem" }}>
-                        <li className='projectList'>
-                            <a href='https://github.com/irfan-tz/opencv-face-recognizer' style={{ alignItems: "center", display: "flex", gap: "1rem", height: "100%", maxWidth: "100vw", textDecoration: "none" }}>
-                                <div style={{ display: "flex", flexDirection: "column" }}>
-                                    <h3 style={{ color: "#a9b6a5", margin: 0, textAlign: "left" }}>Face Recognizer</h3>
-                                    <p style={{ color: "#a9b6a5", textAlign: "left" }}>A face recognizer I made back in class 12th as a final CS project with python using OpenCV with additional image capture and store functionality.</p>
-                                </div>
-                                <img src={Emma} style={{ width: "12rem", borderStyle: "solid" }} />
-                            </a>
-                        </li>
-                        <li className='projectList'>
-                            <a href='https://github.com/irfan-tz/64-bitOS' style={{ alignItems: "center", display: "flex", gap: "1rem", height: "100%", maxWidth: "100vw", textDecoration: "none" }}>
-                                <div style={{ display: "flex", flexDirection: "column" }}>
-                                    <h3 style={{ color: "#a9b6a5", margin: 0, textAlign: "left" }}>64-bitOS</h3>
-                                    <p style={{ color: "#a9b6a5", textAlign: "left" }}>A bare-metal x86-64 kernel featuring multiboot compliance, long mode activation, and paging setup. It does basic VGA text mode characters printing with C.</p>
-                                </div>
-                                <img src={ChupacabraSaysHello} style={{ width: "14rem", borderStyle: "solid" }} />
-                            </a>
-                        </li>
-                        <li className='projectList'>
-                            <a href='https://github.com/irfan-tz/Portfolio' style={{ alignItems: "center", display: "flex", gap: "1rem", height: "100%", maxWidth: "100vw", textDecoration: "none" }}>
-                                <div style={{ display: "flex", flexDirection: "column" }}>
-                                    <h3 style={{ color: "#a9b6a5", margin: 0, textAlign: "left" }}>This website</h3>
-                                    <p style={{ color: "#a9b6a5", textAlign: "left" }}>Made purely using ReactJs and CSS, with <a href='https://www.npmjs.com/package/react-spotify-embed' style={{ color: "#FFFFFF" }}>react-spotify-embed</a></p>
-                                </div>
-                                <img src={Website} style={{ width: "14rem" }} />
-                            </a>
-                        </li>
-                        <li className='projectList'>
-                            <a href='https://github.com/irfan-tz/Kartify_E-Commerce-Website' style={{ alignItems: "center", display: "flex", gap: "1rem", height: "100%", maxWidth: "100vw", textDecoration: "none" }}>
-                                <div style={{ display: "flex", flexDirection: "column" }}>
-                                    <h3 style={{ color: "#a9b6a5", margin: 0, textAlign: "left" }}>Kartify E-Commerce</h3>
-                                    <p style={{ color: "#a9b6a5", textAlign: "left" }}>
-                                        An E-Commerce project I made for my DBMS course with robust database. Made using Django, ReactJS with DjangoREST and authentication managed by ReduxThunk by sending JWT token.
-                                    </p>
-                                </div>
-                                <img src={kartify} style={{ width: "14rem" }} />
-                            </a>
-                        </li>
-                        <li className='projectList'>
-                            <a href='https://github.com/irfan-tz/StickHero' style={{ alignItems: "center", display: "flex", gap: "1rem", height: "100%", maxWidth: "100vw", textDecoration: "none" }}>
-                                <div style={{ display: "flex", flexDirection: "column" }}>
-                                    <h3 style={{ color: "#a9b6a5", margin: 0, textAlign: "left" }}>Replica of StickHero using JavaFX</h3>
-                                    <p style={{ color: "#a9b6a5", textAlign: "left" }}>
-                                        A replica of game Stick Hero using JavaFX implementing different concepts of OOPS, error-checking and testing using JUnitTest.
-                                    </p>
-                                </div>
-                                <img src={stickhero} style={{ width: "6rem" }} />
-                            </a>
-                        </li>
-                        <li className='projectList'>
-                            <a href='https://github.com/irfan-tz/Dungeon-Shell' style={{ alignItems: "center", display: "flex", gap: "1rem", height: "100%", maxWidth: "100vw", textDecoration: "none" }}>
-                                <div style={{ display: "flex", flexDirection: "column" }}>
-                                    <h3 style={{ color: "#a9b6a5", margin: 0, textAlign: "left" }}>Dungeon Shell</h3>
-                                    <p style={{ color: "#a9b6a5", textAlign: "left" }}>
-                                        A simple shell program called "Dungeon" written in C. SIGINT signal handling with lots of supported shell commands, pipeline handling and maintaing record of process's pid, start time and end time which gets shown at exit.
-                                    </p>
-                                </div>
-                                <img src={dungeon} style={{ width: "14rem" }} />
-                            </a>
-                        </li>
-                    </ol>
-                </div>
+                <ol style={{ alignContent: "center", display: "grid", gap: "2rem", gridAutoFlow: "row", listStyleType: "none", maxWidth: "100vw", gridTemplateColumns: "repeat(2,minmax(0,1fr))" }}>
+                    <li className='projectList'>
+                        <a href='https://github.com/irfan-tz/opencv-face-recognizer' style={{ alignItems: "center", display: "flex", gap: "1rem", height: "100%", maxWidth: "100vw", textDecoration: "none" }}>
+                            <div style={{ display: "flex", flexDirection: "column" }}>
+                                <h3 style={{ color: "#a9b6a5", margin: 0, textAlign: "left" }}>Face Recognizer</h3>
+                                <p style={{ color: "#a9b6a5", textAlign: "left" }}>A face recognizer I made back in class 12th as a final CS project with python using OpenCV with additional image capture and store functionality.</p>
+                            </div>
+                            <img src={Emma} style={{ width: "12rem", borderStyle: "solid" }} />
+                        </a>
+                    </li>
+                    <li className='projectList'>
+                        <a href='https://github.com/irfan-tz/64-bitOS' style={{ alignItems: "center", display: "flex", gap: "1rem", height: "100%", maxWidth: "100vw", textDecoration: "none" }}>
+                            <div style={{ display: "flex", flexDirection: "column" }}>
+                                <h3 style={{ color: "#a9b6a5", margin: 0, textAlign: "left" }}>64-bitOS</h3>
+                                <p style={{ color: "#a9b6a5", textAlign: "left" }}>A bare-metal x86-64 kernel featuring multiboot compliance, long mode activation, and paging setup. It does basic VGA text mode characters printing with C.</p>
+                            </div>
+                            <img src={ChupacabraSaysHello} style={{ width: "14rem", borderStyle: "solid" }} />
+                        </a>
+                    </li>
+                    <li className='projectList'>
+                        <a href='https://github.com/irfan-tz/Portfolio' style={{ alignItems: "center", display: "flex", gap: "1rem", height: "100%", maxWidth: "100vw", textDecoration: "none" }}>
+                            <div style={{ display: "flex", flexDirection: "column" }}>
+                                <h3 style={{ color: "#a9b6a5", margin: 0, textAlign: "left" }}>This website</h3>
+                                <p style={{ color: "#a9b6a5", textAlign: "left" }}>Made using only ReactJs and CSS, with <a href='https://www.npmjs.com/package/react-spotify-embed' style={{ color: "#FFFFFF" }}>react-spotify-embed</a></p>
+                            </div>
+                            <img src={Website} style={{ width: "14rem" }} />
+                        </a>
+                    </li>
+                    <li className='projectList'>
+                        <a href='https://github.com/irfan-tz/Kartify_E-Commerce-Website' style={{ alignItems: "center", display: "flex", gap: "1rem", height: "100%", maxWidth: "100vw", textDecoration: "none" }}>
+                            <div style={{ display: "flex", flexDirection: "column" }}>
+                                <h3 style={{ color: "#a9b6a5", margin: 0, textAlign: "left" }}>Kartify E-Commerce</h3>
+                                <p style={{ color: "#a9b6a5", textAlign: "left" }}>
+                                    An E-Commerce project I made for my DBMS course with robust database. Made using Django, ReactJS with DjangoREST and authentication managed by ReduxThunk by sending JWT token. 
+                                </p>
+                            </div>
+                            <img src={kartify} style={{ width: "14rem" }} />
+                        </a>
+                    </li>
+
+                </ol>
             </center>
 
             <div className="card C4">
-                <h1 style={{ marginTop: "1rem", fontFamily: 'Times New Roman, serif', fontWeight: 'lighter', fontSize: '4rem', color: "#008080" }}>
-                    Let's Talk
-                </h1>
-                <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "50%" }}>
-                    <div className="form-container">
-                        <form ref={form} onSubmit={sendEmail}>
-                            <label htmlFor="user_name">Name</label>
-                            <input type="text" id="user_name" name="user_name" />
-                            <label htmlFor="user_email">Email</label>
-                            <input type="email" id="user_email" name="user_email" />
-                            <label htmlFor="message">Message</label>
-                            <textarea id="message" name="message" rows="4"></textarea>
-                            <button type="submit" disabled={isSubmitting || isSent} className={isSent ? 'sent' : ''}>
-                                {isSent ? 'Sent!' : 'Send'}
-                            </button>
-                        </form>
+                <center>
+                    <div className="contact-container">
+                        <h1 style={{ fontFamily: 'Times New Roman, serif', fontWeight: 'lighter', fontSize: '4rem', color: "#008080" }}>
+                            Let's Talk
+                        </h1>
+                        <div className="contact-content">
+                            <p style={{ fontFamily: "Times New Roman, serif", color: "#005959" }}>
+                                Mail me at: irfan.tz026@gmail.com
+                            </p>
+                            <div className="contact-right">
+                                <a href="https://www.instagram.com/irfan.tz" target="_blank" rel="noopener noreferrer" className="instagram-link">
+                                    <img src={Insta} alt="Instagram" />
+                                    Instagram
+                                </a>
+                            </div>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+                            <h1 style={{ color: "#ffd19f", WebkitTextStroke: "0.5px black" }}>Under Construction</h1>
+                            <img src={Construction} alt='Construction Warning' style={{ width: '40%' }} />
+                            <p style={{ fontWeight: 'bolder', color: "#008080" }}>The site is still under construction so I apologise if something may not work as intended or things look out of place.</p>
+                        </div>
                     </div>
-
-                    <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", width: "50%", gap: "1rem" }}>
-                        <a href="https://www.instagram.com/irfan.tz" target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <img src={Insta} alt="Irfan's Instagram" />
-                            Instagram
-                        </a>
-                        <a href="https://www.github.com/irfan-tz" target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <img src={GithubImage} alt="Irfan's GitHub" />
-                            GitHub
-                        </a>
-                        <a href="https://www.linkedin.com/in/mohd-irfan-raza/" target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <img src={linkedinImage} alt="Irfan's LinkedIn" />
-                            LinkedIn
-                        </a>
-                        <a href="mailto:irfan22298@iiitd.ac.in" target="_blank" rel="noopener noreferrer" className="instagram-link">
-                            <img src={mailImage} alt="Irfan's email address" />
-                            irfan22298@iiitd.ac.in
-                        </a>
-                    </div>
-                </div>
+                </center>
             </div>
+
+
         </div>
     );
 
